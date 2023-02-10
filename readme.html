@@ -1,0 +1,749 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<HTML>
+
+<HEAD>
+<TITLE>SmartCTF 4E Readme</TITLE>
+<STYLE TYPE="text/css">
+<!--
+body {
+  font-family: Verdana, Tahoma, Arial, Helvetica;
+  font-size: 10pt;
+}
+
+TD {
+  font-size: 10pt;
+	vertical-align: top;
+}
+
+A:link, A:visited {
+  color: blue;
+  text-decoration: none;
+}
+A:hover {
+  color: red;
+  text-decoration: underline; 
+}
+--> 
+</STYLE>
+</HEAD>
+
+<BODY>
+
+
+
+<P><B><FONT SIZE="6">S</FONT><FONT SIZE="5">MART</FONT><FONT SIZE="6">CTF 4E</FONT></B></P>
+
+<P>SmartCTF is a mutator to promote teamplay in CTF games. It has a special scoring system, as well as an advanced 
+scoreboard showing various teamplay orientated statistics. And many, many more features.</P>
+
+<P>This page contains documentation about the tweaking and modifications done in SmartCTF mod</P>
+<P>This mod was originally made by <B>{PiN}Kev</B> around January 2004, and linked to 
+<A HREF="http://pin.progameplayer.com/SmartCTF">http://pin.progameplayer.com/SmartCTF</A> 
+but that site doesn't seem to work anymore.</P>
+Tweaked by <B><A HREF="http://www.clanbase.com/personinfo.php?pid=1591401">{DnF2}SiNiSTeR</A></B> in January - March 2005. Besides listing his changes, on this site you can 
+also find an user / admin manual.</P>
+<P>Version 4D was made by [es]Rush, Version 4D++ was made by Adminthis,changes are listed in the Changelog.</P>
+
+<P>The_Cowboy and Sp0ngeb0b proudly present SmartCTF 4E!</P>
+
+<HR SIZE="2" WIDTH="80%" COLOR="black" ALIGN="left">
+
+<P><B><FONT SIZE="6">C</FONT><FONT SIZE="5">ONTENTS</FONT></B></P>
+
+<P><UL>
+<LI><P><A HREF="#changelog">Changelog / Features</A></LI></P>
+<LI><P><A HREF="#install">Installing</A></LI></P>
+<LI><P><A HREF="#ini">Options in the .INI File</A></LI></P>
+<LI><P><A HREF="#rules">Pointsystem and Rules</A></LI></P>
+<LI><P><A HREF="#commands">Commands and Keybinds</A></LI></P>
+<LI><P><A HREF="#faq">FAQ</A></LI></P>
+<LI><P><A HREF="#Credits">Credits</A></LI></P>
+<LI><P><A HREF="#Special Thanks">Special Thanks</A></LI></P>
+<LI><P><A HREF="#contact">Contact</A></LI></P>
+</UL></P>
+
+<A NAME="changelog">
+<HR SIZE="2" WIDTH="80%" COLOR="black" ALIGN="left">
+
+<P><B><FONT SIZE="6">C</FONT><FONT SIZE="5">HANGELOG</FONT></B></P>
+
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="5">
+
+
+
+<TR>
+<TD WIDTH="160">
+<H3>SmartCTF 4E</H3>
+<I>Adminthis
+&<BR>}IN{The_Cowboy<BR>& Sp0ngeb0b<BR><BR>December 2009</I>
+</TD>
+<TD><OL>
+<LI>Added option to show SmartCTF scoreboard by default.</LI>
+<LI>Added option to show spectators on SmartCTF scoreboard.</li>
+<LI>Added option to color the spectator-line on SmartCTF scoreboard.</li>
+<LI>Added option to create keybind on client. Scoreboard can be changed by pressing F3.</LI>
+<LI>Added option to inform players about keybind.</LI>
+<LI>Added option to specify scoreboard initialization delay (required for compatibility with some server configurations).</LI>
+<LI>Added option to specify intro message delay (in case it is suppressed by a lot of other onjoin messages).</LI>
+<LI>Added score restoring feature</LI>
+<LI>Removed accessed none warnings</LI>
+<LI>Added Snowy SmartCTF scoreboard and santa images</LI>
+</LI>
+</OL></TD>
+</TR>
+
+
+
+<TR>
+<TD WIDTH="160">
+<H3>SmartCTF 4D</H3>
+<I>[es]Rush<BR>
+January 2006</I>
+</TD>
+<TD><OL>
+<LI>Support for IpToCountry actor!! If it is running SmartCTF will show little country flag miniatures below the faces.</LI>
+<LI>Improved SmartCTF logo showing up.</LI>
+<LI>Added additional stat - DefKills - will show up when bExtraStats is true. However it requires switching the stats every 3 seconds so it is not good when doing screenshots and want to have all the stats at one time.</LI>
+</OL></TD>
+</TR>
+
+<TD WIDTH="160">
+<H3>SmartCTF 4C</H3>
+<I>{DnF2}SiNiSTeR<BR>
+March 2005</I>
+</TD>
+<TD><OL>
+<LI>Bugfixed version of 4B, not much changes.</LI>
+<LI>Fixed: being unable to use a custom scoreboard like MODOS, SubStats or even the PURE Clickboard (after the first map).</LI>
+<LI>Spawnkill time limits can be specified in the .ini-file.</LI>
+<LI>Added a minimal flag capture bonus for the new scoring system.</LI>
+<LI>Displays a faceless avatar instead of a blank space, when a player has no face.</LI>
+<LI>No Flagsaves for flags really close to eachother.</LI>
+</OL></TD>
+</TR>
+
+<TR>
+<TD WIDTH="160">
+<H3>SmartCTF 4B</H3>
+<I>{DnF2}SiNiSTeR<BR>
+March 2005</I>
+</TD>
+<TD><OL>
+<LI>Totally renewed and vamped the SmartCTF scoreboard!
+  <UL TYPE="square">
+	<LI>The SmartCTF scoreboard now replaces the original scoreboard instead of painting over your HUD. But no worries, 
+	you can toggle between the normal scoreboard and SmartCTF scoreboard with the familiar command "mutate SmartCTF Stats". 
+	Also by default you won't see the SmartCTF scoreboard until the game has ended like with every other SmartCTF version. 
+	Therefore there should be no disadvantages, just the advantage that your HUD does not get screwed up anymore on occasion! 
+	(Like	your Chat Area being hidden again...)</LI>
+  <LI>Furthermore the scoreboard looks much sexier. Read on...</LI>
+	<LI>For starters, players are accompanied by the face of their player model (avatar).</LI>
+  <LI>There is a dark shading behind the data for better readibility of compressed screenshots.</LI>
+  <LI>The statistic bars are now a ratio of the maximum, not the total.</LI>
+  <LI>Players have extra stats: Efficiency, number of HeadShots, ShieldBelt and Damage Amp pickups.</LI>
+  <LI>Therefore ping and packetloss is displayed under the avatar.</LI>
+  <LI>The team headers if some extra information as well. These are average ping and packetloss for that team, 
+	and percent of total SB/Amp pickups.</LI>		
+  <LI>In the bottom of the screen the tickrate of the server will now display (at the end of the server line).</LI>
+  <LI>All this data is also dynamic, trying to get as much players to fit on the screen as possible. It 
+	supports upto 18 players at a resolution 1024x768.</LI>		
+  </UL>
+<LI>Several bugfixes:
+  <UL TYPE="square">
+  <LI>Now compatible with UTPure's WarmUp Mode!</LI>
+  <LI>Fixed "multiple player name" bug at end of game when people leave and join.</LI>
+  <LI>No more "Long Range" messages when killing with a <I>zoomed</I> sniper.</LI>
+  <LI>Show FC Location (bShowFCLocation in .ini) can actually be disabled now.</LI>
+  <LI>As well as bPlay30SecSound, but this is tricky. When enabled, it changes a setting on the client when the player joins. This 
+  change remains until that player quits UT. So he could also hear the sound when joining a non-SmartCTF server later ;)</LI>
+  <LI>Fixed a scoring error for flagreturns (mid/base swapped).</LI>
+  </UL>
+<LI>More specific SmartCTF logging, also fills the Flag Assist column for <A HREF="http://www.unrealadmin.org/forums/showthread.php?t=9556">UTStats beta 3 by azazel</A>!
+<LI>Optional Spawnkill Detection, with score penalties and messages.</LI>
+<LI>SmartCTF Server Info (F2), including Record Holders for various stats.</LI>
+<LI>Optional "You Got The Lead"/"You Lost The Lead" announcer sounds at capping.
+<LI>Included "Overtime Control".</LI>
+<LI>New cap/assist scoring system.</LI>
+<LI>Console command "mutate SmartCTF ForceEnd" to force a game to end.</LI>
+<LI>Console command "mutate CTFInfo", like UTPure's "CheatInfo".</LI>
+<LI>"MonsterAnnouncer" for Enhanced MultiKill (broadcast multi kills etc. in console for example for reporterbot).</LI>
+<LI>Keybind for stat toggling can be selected in UT Settings / Controls.</LI> 
+<LI>Made the startup logo smaller.</LI>
+<LI>Decreased filesize with ~one third.</LI>
+<LI>Decreased network usage by ~half.</LI>
+<LI>Works better on standalone games. But keep in mind it was programmed for a dedicated server.</LI>
+<LI><I>A lot</I> general code improvements, optimalizations and changes.</LI>
+</OL></TD>
+</TR>
+
+<TR>
+<TD>
+<H3>SmartCTF 4A</H3>
+<I>{DnF2}SiNiSTeR<BR>
+November 2004</I>
+</TD>
+<TD><OL>
+<LI>Fixes the "flagbug" where the flag is sent home when the FC disconnects. Now it is dropped there.</LI>
+<LI>Lots of booleans you can set in the .ini file to hide certain SmartCTF messages on your server.</LI>
+<LI>Same goes for setting SmartCTF bonuses and almost every other SmartCTF feature.</LI>
+<LI>Can be setup as Server Actor so you don't have to select the mutator each time. Doesn't load for non-CTF gametypes.</LI>
+<LI>Optional 'Assist' sound at assist, 'Capture' sound at capture and 'Nice Catch' sound at save.</LI>
+<LI>SmartCTF messages have their own spot and don't interfere with other messages, this also fixes the Saved message bug.</LI>
+<LI>Works with bots (thus offline) now as if they were players also.</LI>
+<LI>Enhanced MultiKill Messages (Triple Kill &amp; MegaKill + Announcer).</LI>
+<LI>Code reformatting, various small code tweaks and optimalizations.</LI>
+<LI>Rules for Cover Kills altered a bit (more flexable).</LI>
+<LI>Missing Announcer sound on '30 second remaining' included.</LI>
+<LI>Other small sounds added for some SmartCTF messages.</LI>
+<LI>Long Range Kill detection and message at headshot location (headshot has preference).</LI>
+<LI>Powered by SmartCTF message/logo.</LI>
+<LI>Small Statboard enhancements.</LI>
+<LI>Shows "Deaths" instead of "Seals" if no Seals.</LI>
+</OL></TD>
+</TR>
+
+<TR>
+<TD>
+<H3>SmartCTF V4.0</H3>
+<I>{PiN}Kev<BR>
+January 2004</I>
+</TD>
+<TD><OL>
+<LI>Option to turn off all smartCTF messages for those who fear distraction in matches.<BR>
+-mutate SmartCTF messages off/on</LI>
+<LI>Displays FC location right bottom side when your team has flag. No more need to F1.</LI>
+<LI>Added flag return points as follows:  Flag returns in own base = 0.5 pts. Flag returns in mid = 2pts.
+Flag returns in enemy base = 4 pts.  Flag returns very close to capping = 8 pts with a big message.</LI>
+<LI>Auto screenshot option for tourney mode maps. D/L the ini from main page and put in system dir.</LI>
+<LI>Fixed assist bug where some times it didn't reward as it should.</LI>
+<LI>Fixed accessed nones. No more scriptwarning: SmartCTF.broadcastlocalizedMessage stuff in the logs.</LI>
+<LI>Fixed current time error for month.</LI>
+<LI>Auto brings up stats at end of game.</LI>   
+<LI>No longer made stats override F1, so people who dont have the stats binded can turn it off easier with F1.</LI>
+</OL></TD>
+</TR>
+
+<TR>
+<TD>
+<H3>SmartCTF V3.0</H3>
+<I>{PiN}Kev</I>
+</TD>
+<TD><OL>
+<LI>Team scores on top</LI>
+<LI>Added ping , pl, and time for each player</LI>
+<LI>Shows server name at bottom</LI>
+<LI>Shows game ended message at top<BR>
+So now with those you can take SS of SmartCTF stats instead of F1 after each map in matches/tourneys.</LI>
+<LI>Now logs covers and seals into ngLogs (Prompted by dio\Apollo's ngLog parser: http://www.clan-dioscuri.com/serverstats.php) very nice stuff.</LI>
+<LI>Added current time for those who lose track of time playing. The time is YOUR time, whatever your computer is set to.</LI>
+<LI>Fixed some point system errors.</LI> 
+</OL></TD>
+</TR>
+
+<TR>
+<TD>
+<H3>SmartCTF V2.0</H3>
+<I>{PiN}Kev</I>
+</TD>
+<TD><OL>
+<LI>Fixed bug where not all players are drawn sometimes.
+<LI>Sorted names by score
+<LI>Changed color scheme for easier reading. The ammount of green in bar reflects the raw number of the stat.
+<LI>Added flag icon next to FC
+<LI>A cover kill is now either if the victim can see FC, ** OR ** if he's within 800 unreal units of FC (Approx 50 ft).
+<LI>Auto turns off F1 when viewing stats
+<LI>Made the number of pulse kills it takes to get pulse whore message configurable via ini. Just put the ini in the system folder.
+<LI>Fixed some bugs like suicides not resetting the 30-kill spree, not resetting list of ppl who assisted or covered/sealed after flag return.
+<LI>Fixed some accessed nones, which have no impact on server performance.
+<LI>Please remove all earlier versions of SmartCTF. I forgot to label the 1st one SmartCTFV1 in the mutator list, but this one is labeled SmartCTFV2.
+</OL></TD>
+</TR>
+
+</TABLE>
+
+<A NAME="install">
+<HR SIZE="2" WIDTH="80%" COLOR="black" ALIGN="left">
+
+<P><B><FONT SIZE="6">I</FONT><FONT SIZE="5">NSTALLING</FONT></B></P>
+
+<P>SmartCTF is a client- and serverside mod. This means it has to be installed on the server. It should also 
+be added to the ServerPackages so clients will download it automatically to be able to see stats and 
+the likes.</P>
+<P>The steps for Server Administrators are as follows:</P>
+<UL>
+<LI><P>Remove all earlier versions of SmartCTF to avoid conflicts!</P></LI>
+<LI><P>Extract the <B>.ini</B>, <B>.int</B>, and <B>.u</B> files in the <B>UT\System</B> directory.</P></LI>
+<LI><P>You can extract the readme file to <B>UT\Help</B> if you want.</P></LI>
+<LI><P>Now open <B>UnrealTournament.ini</B> (in your <B>UT\System</B> folder) and look for <B>[Engine.GameEngine]</B>.</P></LI>
+<LI><P>Add the following to the list of 'ServerPackages=':<BR>
+<B>ServerPackages=SmartCTF_4E</B></P></LI>
+<LI><P>If you want to use <b>IpToCountry</b> you also have to have these: "ServerPackages=CountryFlags2" and "ServerActors=IpToCountry.LinkActor", but that should be described in IpToCountry's readme, and besides you need the IpToCountry.u.</P></LI>
+<LI><P>Also, if you don't want to select the SmartCTF mutator each time but have it be added to CTF games by default, 
+you have to add another line to <I><U>the end of the list</U></I> of 'ServerActors=':<BR>
+<B>ServerActors=SmartCTF_4E.SmartCTFServerActor</B></P></LI>
+<LI><P>There's a reason this has to be added at the end. The mutator will take the current scoreboard to show by default, but meanwhile 
+replace it with the SmartCTF scoreboard. If say the ScoreBoard utility MODOSUtilV25 gets loaded <I>after</I> SmartCTF, the MODOS 
+scoreboard won't get detected, or the SmartCTF scoreboard won't show. Note that UTPure also changes the scoreboard in Tournament games, for the clickboard. 
+So place it after UTPure too.</P></LI>
+<LI><P>Also, SmartCTF Server Info won't work if you insert the package in the list before UTPure!</P></LI>
+<LI><P>For the same reasons, if you don't use the ServerActor but add the mutator manually, try sticking it 
+at the end of the mutator list.</P></LI>
+<LI><P>An usual mistake is to edit the UT .ini file while the server is still running. You won't be able to make changes to 
+the file that way.</P></LI>
+<LI><P>Ready to go!</P></LI>
+</UL>
+
+<A NAME="ini">
+<HR SIZE="2" WIDTH="80%" COLOR="black" ALIGN="left">
+
+<P><B><FONT SIZE="6">O</FONT><FONT SIZE="5">PTIONS IN THE .INI FILE</FONT></B></P>
+
+<P>Just open up the <B>SmartCTF_4E.ini</B> in the <B>UT\System</B> folder. If you can't find it,
+run a game with SmartCTF one time to generate it with the default options.</P>
+
+<H3>Explanation</H3>
+
+<TABLE STYLE="font-size: 10pt" BORDER="1" CELLPADDING="5">
+<TR STYLE="background-color: silver"><TD><B>Name</B></TD><TD><B>Default Value</B></TD><TD><B>Description</B></TD>
+<TR><TD>CapBonus<BR>AssistBonus<BR>CoverBonus<BR>SealBonus<BR>FlagKillBonus<BR>GrabBonus</TD>
+<TD>8<BR>7<BR>2<BR>2<BR>0<BR>0</TD>
+<TD>Here you can enter the SmartCTF bonuses. Remember this gets added to default UT scorings. 
+You can only enter integer numbers, and can use something like -1 to decrease in score, for example  
+setting FlagKillBonus to -1 will give 4 points instead of standard 5 on a flagkill. See <A HREF="#rules">Scoring</A>.</TD></TR>
+<TR><TD>BaseReturnBonus<BR>MidReturnBonus<BR>EnemyBaseReturnBonus<BR>CloseSaveReturnBonus</TD>
+<TD>0.500000<BR>2.000000<BR>4.000000<BR>8.000000</TD>
+<TD>If you return the flag in a specific playerzone or really close to the flag. These can be decimal numbers 
+hence the 0.5 pts for base returns. You don't see decimals on the scoreboard. See <A HREF="#rules">Scoring</A>.</TD></TR>
+<TR><TD>SpawnKillPenalty</TD><TD>1</TD>
+<TD>If Spawnkill Detection is enabled, this is the amount of points you lose for each spawnkil you do.</TD></TR>
+<TR><TD>MinimalCapBonus</TD><TD>5</TD>
+<TD>Only applicable with the new cap/assist scoring system, this specifies the minimal amount of points a flagcapture is worth. 
+See <A HREF="#rules">Scoring</A>.</TD></TR>
+<TR><TD>bEnabled</TD><TD>True</TD>
+<TD>You can totally disable the loading of SmartCTF by setting this to False.</TD></TR>
+<TR><TD>bFixFlagBug</TD><TD>True</TD>
+<TD>If True, the flag will be dropped if the FC disconnects or lags out, instead of being sent home which is the 
+default UT functionality. Hopefully this will prevent some 'lagoutcaps' in clanwars.</TD></TR>
+<TR><TD>bEnhancedMultiKill</TD><TD>False</TD>
+<TD>Enable enhanced multikills. Inserts 2 extra phases, in color changing messages and unlimited MonsterKills.</TD></TR>
+<TR><TD>EnhancedMultiKillBroadcast</TD><TD>3</TD>
+<TD>Ignored if bEnhancedMultiKill = False. Since the MonsterAnnouncer mod is incompatible with Enhanced Multkill, SmartCTF 
+has a built-in function for it. It will display a message in the console if a player gets a Multi Kill, Triple Kill etc.<BR>
+The value decides from which multkill-level onwards a message should be displayed (as in 2 = Double Kill, 3 = Triple Kill, etc). 
+0 = no message will be displayed.<BR><BR>
+If you want this functionality but don't want Enhanced MultiKill, use <A HREF="http://www.unrealadmin.org/forums/showthread.php?t=6461" 
+TARGET="_blank">TNSe's MonsterAnnouncer</A> instead.</TD></TR>
+<TR><TD>bShowFCLocation</TD><TD>True</TD>
+<TD>Players will see the location (playerzone) of their own Flagcarrier in the bottom right corner of the screen.</TD></TR>
+<TR><TD>bSmartCTFServerInfo</TD><TD>True</TD>
+<TD>Enhanced Server Info under F2. Just check it out!</TD></TR>
+<TR><TD>bNewCapAssistScoring</TD><TD>True</TD>
+<TD>Utilizes the new scoring system for captures and assists. See <A HREF="#rules">Scoring</A>.</TD></TR>
+<TR><TD>bSpawnKillDetection</TD><TD>True</TD>
+<TD>Detects spawnkills and displays a message similar to the "Head Shot!" message. See <A HREF="#faq">FAQ</A>.</TD></TR>
+<TR><TD>SpawnKillTimeNW<BR>SpawnKillTimeArena</TD><TD>3.500000<BR>1.000000</TD>
+<TD>The maximal time after a victim respawns, that the kill can be defined as a spawnkill. For arena (instagib) and NW games. 
+See <A HREF="#faq">FAQ</A>.</TD></TR>
+<TR><TD>bShowSpawnKillerGlobalMsg</TD><TD>True</TD>
+<TD>Will display a global message about the spawnkiller, when someone makes 3 consecutive spawnkils in a row without dieing.</TD></TR>
+<TR><TD>bAfterGodLikeMsg</TD><TD>False</TD>
+<TD>Enable the additional killingspree message after Godlike, "Too Easy For..", and another one. No sound.</TD></TR>
+<TR><TD>bStatsDrawFaces</TD><TD>True</TD>
+<TD>Whether to draw the avatars on the Statboard.</TD></TR>
+<TR><TD>bDrawLogo</TD><TD>True</TD>
+<TD>If True, a player will see a logo on joining the server. Otherwise a console message is displayed.</TD></TR>
+<TR><TD>CoverMsgType<BR>CoverSpreeMsgType<BR>SealMsgType<BR>SavedMsgType</TD><TD>0<BR>1<BR>1<BR>3</TD>
+<TD>0..3, how to display certain SmartCTF messages.<BR>
+0 = off, 1 = console message self, 2 = console all players, 3 = HUD message for all.<BR><BR>
+CoverMsg: ... covered the flagcarrier!<BR>
+CoverSpreesMsg: ... is on a multi cover / cover spree !<BR>
+SealMsg: ... is sealing off the base!<BR>
+Saved Msg: Saved By ...!</TD></TR>
+<TR><TD>bShowLongRangeMsg</TD><TD>False</TD>
+<TD>Display "Über / Long Range Kill!" similar to the "Head Shot!" message, on non-sniper/insta/trans/deemer kills over huge distances.</TD></TR>
+<TR><TD>bShowSealRewardConsoleMsg<BR>bShowCoverRewardConsoleMsg<BR>bShowAssistConsoleMsg</TD>
+<TD>True</TD>
+<TD>These are the 'reward on cap' and 'assist' messages displayed in the console, you can disable them also.</TD></TR>
+<TR><TD>bPlaySavedSound<BR>bPlayCaptureSound<BR>bPlayAssistSound<BR>bPlayLeadSound<BR>bPlay30SecSound</TD>
+<TD>True<BR>False<BR>True<BR>True<BR>True</TD>
+<TD>Additional Announcer sounds, "Capture" at a flagcap, "Assist" when you get an assist bonus and "Nice Catch!" if you do 
+a Flagsave. Also "You Got The Lead!" or "You Lost The Lead!" when you make a capture or the opponent makes a capture, 
+when appropiate. And the missing "30 seconds remaining..." sound (sounds a bit odd tho :s)</TD></TR>
+<TR><TD>bEnableOvertimeControl<BR>bOvertime<BR>bRememberOvertimeSetting</TD>
+<TD>False<BR>True<BR>False</TD>
+<TD>Please refer to the <A HREF="#faq">FAQ</A> for information about Overtime Control.</TD></TR>
+<TR><TD><B>New Features</B><BR>bSCTFSbDef<BR>bShowSpecs<BR>bDoKeybind<br><BR>bExtraMsg<BR>SbDelay<BR><BR>MsgDelay<BR><BR>bStoreStats<BR>bSnowyScoreboard<BR>bXmasImages<BR>SpectatorColor</TD><TD><BR>True<BR>True<BR>True<BR><br>True<BR>0.500000<BR><BR>3.000000<BR><BR>True<BR>False<BR>True<BR>(R=255,G=255,B=255,A=0)</TD>
+<TD><BR>To show SmartCTF scoreboard by default<BR>If set true, spectators will be shown on the SmartCTF-Scoreboard<BR>Creats the keybind for every player who joins the server.Players can toggle between the scoreboards by pressing F3<BR>Informs the players about the keybind<BR> Delay in seconds after which the scoreboard is initialized on the client (i.e.: changed to the SmartCTF board).
+Only change (increase) this setting if you are experiencing problems [probably required when running Nexgen ]<BR>Delay in seconds after which a new player is sent the welcome message ("Running SmartCTF..."). Optionally accompanied
+by the keybind message if bExtraMsg=True<BR><br>Restores the player's stats (flagkills,covers etc) when they reconnect in same game(in case of dc)<BR>If set to true, snow will be spawned in the background of the Scoreboard<BR>Adds Xmas images to the Scoreboard (only if "bSnowyScoreboard" is set to true)<BR>Color of the "Spectators:"" line (Default: White)  </TD></TR>
+
+</TABLE>
+
+<H3>Public servers</H3>
+
+<P>Now, understandably we want different settings for a public server and a clanserver. The default 
+options are somewhere inbetween.<BR>
+<BR>
+Here is a sample configuration suited for a public funserver. SmartCTF messages are fully enabled 
+and so are most 'funstuff' features:<BR>
+<PRE>
+[SmartCTF_4E.SmartCTF]
+bEnabled=True
+bExtraStats=True
+CountryFlagsPackage=CountryFlags2
+CapBonus=8
+AssistBonus=7
+FlagKillBonus=0
+CoverBonus=2
+SealBonus=2
+GrabBonus=0
+BaseReturnBonus=0.500000
+MidReturnBonus=2.000000
+EnemyBaseReturnBonus=4.000000
+CloseSaveReturnBonus=8.000000
+SpawnKillPenalty=1
+MinimalCapBonus=5
+bFixFlagBug=True
+bEnhancedMultiKill=True
+EnhancedMultiKillBroadcast=5
+bShowFCLocation=True
+bSmartCTFServerInfo=True
+bNewCapAssistScoring=True
+bSpawnkillDetection=True
+SpawnKillTimeArena=1.000000
+SpawnKillTimeNW=3.500000
+bAfterGodLikeMsg=True
+bStatsDrawFaces=True
+bDrawLogo=True
+bSCTFSbDef=True 
+bShowSpecs=True
+bDoKeybind=True 
+bExtraMsg=True  
+SbDelay=.500000	
+MsgDelay=3.000000
+bStoreStats=True
+CoverMsgType=3
+CoverSpreeMsgType=3
+SealMsgType=3
+SavedMsgType=3
+bShowLongRangeMsg=True
+bShowSpawnKillerGlobalMsg=True
+bShowAssistConsoleMsg=True
+bShowSealRewardConsoleMsg=True
+bShowCoverRewardConsoleMsg=True
+bPlayCaptureSound=False
+bPlayAssistSound=True
+bPlaySavedSound=True
+bPlayLeadSound=True
+bPlay30SecSound=True
+bEnableOvertimeControl=False
+bOverTime=True
+bRememberOvertimeSetting=False
+</PRE>
+</P>
+
+<H3>Clanservers</H3>
+
+<P>We don't want too much distraction here, so no big screen messages like "X covered the flagcarrier" 
+and "X is sealing off the base". Furthermore 'funstuff' like Enhanced Multikill is disabled.Even there is no need to bother players about keybinds. Some console 
+messages remain, but you can tune this down even further if you want.<BR>
+<PRE>
+[SmartCTF_4E.SmartCTF]
+bEnabled=True
+bExtraStats=False
+CountryFlagsPackage=CountryFlags2
+CapBonus=8
+AssistBonus=7
+FlagKillBonus=0
+CoverBonus=2
+SealBonus=2
+GrabBonus=0
+BaseReturnBonus=0.500000
+MidReturnBonus=2.000000
+EnemyBaseReturnBonus=4.000000
+CloseSaveReturnBonus=8.000000
+SpawnKillPenalty=0
+MinimalCapBonus=5
+bFixFlagBug=True
+bEnhancedMultiKill=False
+EnhancedMultiKillBroadcast=3
+bShowFCLocation=True
+bSmartCTFServerInfo=True
+bNewCapAssistScoring=False
+bSpawnkillDetection=False
+SpawnKillTimeArena=1.000000
+SpawnKillTimeNW=3.500000
+bAfterGodLikeMsg=False
+bStatsDrawFaces=True
+bDrawLogo=True
+bSCTFSbDef=True 
+bShowSpecs=False
+bDoKeybind=True 
+bExtraMsg=False  
+SbDelay=.500000	
+MsgDelay=3.000000
+CoverMsgType=0
+CoverSpreeMsgType=0
+SealMsgType=0
+SavedMsgType=3
+bShowLongRangeMsg=False
+bShowSpawnKillerGlobalMsg=False
+bShowAssistConsoleMsg=True
+bShowSealRewardConsoleMsg=True
+bShowCoverRewardConsoleMsg=True
+bPlayCaptureSound=False
+bPlayAssistSound=True
+bPlaySavedSound=True
+bPlayLeadSound=True
+bPlay30SecSound=True
+bEnableOvertimeControl=False
+bOverTime=True
+bRememberOvertimeSetting=False
+</PRE>
+</P>
+
+<H3>Default UT scoring</H3>
+
+<P>If you want the default UT scoring, and not the SmartCTF enhanced point system, just 
+set all bonuses to 0 and <B>bNewCapAssistScoring</B> to False.<BR>
+<PRE>
+CapBonus=0
+AssistBonus=0
+FlagKillBonus=0
+CoverBonus=0
+SealBonus=0
+GrabBonus=0
+BaseReturnBonus=0.000000
+MidReturnBonus=0.000000
+EnemyBaseReturnBonus=0.000000
+CloseSaveReturnBonus=0.000000
+SpawnKillPenalty=0
+MinimalCapBonus=0
+bNewCapAssistScoring=False
+</PRE>
+</P>
+
+<H3>Changing settings as admin</H3>
+
+<P>Any client logged in as admin can easily change these settings by typing commands like this in the console:<BR>
+<B>admin set SmartCTF CapBonus 5</B><BR>
+<B>admin set SmartCTF bShowFCLocation False</B></P>
+<P>Use a command like <B>admin get SmartCTF bFixFlagBug</B> to request the current value.</P>
+<P>Note that some properties might require a restart of the game to take effect!</P>
+
+<BR>
+
+<A NAME="rules">
+<HR SIZE="2" WIDTH="80%" COLOR="black" ALIGN="left">
+
+<P><B><FONT SIZE="6">P</FONT><FONT SIZE="5">OINTSYSTEM AND RULES</FONT></B></P>
+
+<H3>Default points</H3>
+
+<P>SmartCTF changes the points you receive. They can now be changed by the server admin, if you want to check a certain 
+server's settings just type 'mutate smartctf rules' in the console. Here is the default setting.</P>
+
+<P>
+<TABLE STYLE="font-size: 10pt; text-align: center" BORDER="1" CELLPADDING="5">
+<TR STYLE="background-color: silver"><TD><B>Action</B></TD><TD><B>UT Score</B></TD><TD><B>SmartCTF Bonus</B></TD><TD><B>Total</B></TD></TR>
+<TR><TD>Capture**</TD><TD>7</TD><TD>8</TD><TD>15</TD></TR>
+<TR><TD>Assist**</TD><TD>-</TD><TD>7</TD><TD>7</TD></TR>
+<TR><TD>Flagkills</TD><TD>5</TD><TD>0</TD><TD>5</TD></TR>
+<TR><TD>Covers</TD><TD>1*</TD><TD>2</TD><TD>3</TD></TR>
+<TR><TD>Seals</TD><TD>1*</TD><TD>2</TD><TD>3</TD></TR>
+<TR><TD>Grabs</TD><TD>0</TD><TD>0</TD><TD>0</TD></TR>
+<TR><TD>Flagreturns in own base</TD><TD>-</TD><TD>0.5</TD><TD>0.5</TD></TR>
+<TR><TD>Flagreturns in mid</TD><TD>-</TD><TD>2</TD><TD>2</TD></TR>
+<TR><TD>Flagreturns in enemy base</TD><TD>-</TD><TD>4</TD><TD>4</TD></TR>
+<TR><TD>Flagreturns really close</TD><TD>-</TD><TD>8</TD><TD>8</TD></TR>
+<TR><TD>Spawnkill</TD><TD>1*</TD><TD>-1</TD><TD>0</TD></TR>
+</TABLE>
+<BR>
+* The 1 score you get from UT is because of the normal kill you did.<BR>
+** There is a new scoring system for caps and assists. See below. 
+</P>
+
+<H3>Rules</H3>
+<UL>
+<LI><P>An <B>Assist</B> is if you carried the flag, but dropped it and a teammember took over and capped.</P></LI>
+<LI><P>A <B>Cover</B> is defined as a kill while defending your flagcarrier. This has to do with distance as well as enemies 
+seeing the flagcarrier.</P></LI>
+<LI><P>A <B>Seal</B> is defined by:<BR>
+1) Your FC is on your team's side of map.<BR> 
+2) Your flag is not taken.<BR>
+3) You kill some one on your side of the map.</P></LI>
+<LI><P>If the FC that you covered and/or sealed off the base for, caps, then you once again get bonuses for each 
+such kill you made (so coverkills x 2 pts, sealkills x 2 pts).</P></LI>
+<LI><P>Seals and Flagreturns require maps with proper zone names, that is player locations 
+that contain "Red", "Blue" and "Mid" in their text.</P></LI>
+<LI><P>A <B>Flagsave</B> is a Flagreturn really close to the enemy flag which has not been taken. 
+This is accompanied by a "Saved By" message.</P></LI>
+<LI><P>A <B>Spawnkill</B> is defined in the <A HREF="#faq">FAQ</A>.</P></LI>
+
+</UL>
+
+<H3>New cap/assist scoring</H3>
+
+<P>With the setting <B>bNewCapAssistScoring</B> enabled, the points for Assist and Captures will be divided based on 
+the time each player carried the flag!</P>
+<P>It uses the total amount of points normally awarded for a capture (by default 15, see table). So you can configure 
+<B>CapBonus</B> to change this. If you capped a flag doing a solorun, then you get all the points because you 
+carried it 100% of the time. If someone carries a flag for 15 seconds, drops it, you pick it up, carry it for 5 seconds 
+then cap, then you get 25% of the points and the assister 75% of 15 points.<BR>
+If you drop a flag and later pick it up again, then the new time will be added to the old.</P>
+<P>There's also a setting to give a flagcapper a minimal bonus. For example if someone pickups a dropped flag 1 meter 
+for the flag and caps, he would get very little points, even if it was a nice rescue. With <B>MinimalCapBonus</B> you can 
+adjust this and set a lower bound. By default this is 5, so a capture would give you <I>at least</I> 5 points. 
+More if applicable.</P>
+<P>With <B>bShowAssistConsoleMsg</B> on True, you will see a console message telling you how much seconds you carried it.</P>
+<P>This was not fully my idea, because I've played on a server once with this functionality enabled. I don't know how the mod 
+was called, how it exactly worked or who made it, and couldn't find anything on the Internet. So I just went and made my 
+own implementation of it. But credit to whoever's original idea it was.</P>  
+
+<A NAME="commands">
+<HR SIZE="2" WIDTH="80%" COLOR="black" ALIGN="left">
+
+<P><B><FONT SIZE="6">C</FONT><FONT SIZE="5">OMMANDS AND KEYBINDS</FONT></B></P>
+
+<P>The following commands can be typed by clients in the console:</P>
+
+<UL>
+<LI><P><B>mutate smartctf</B><BR>General info.</P></LI>
+<LI><P><B>mutate smartctf stats</B><BR>Toggle between the default scoreboard and the SmartCTF scoreboard. Basically this 
+sets what you will see under F1. In the top right corner of the screen you can see for a moment which is selected. 
+When the game starts, you always begin with the default. When it ends, you will always toggle to the SmartCTF scoreboard.</P></LI>
+<LI><P><B>mutate ctfinfo</B><BR>Gives an overview of all SmartCTF related settings on that server 
+(Like UTPure's "CheatInfo" command).</P></LI>
+<LI><P><B>mutate smartctf rules</B><BR>Shows all bonuses settings for the server.</P></LI>
+<LI><P><B>mutate smartctf forceend</B><BR>An admin can force the game to end, even if it is a tie. 
+SmartCTF ScoreBoard will also show up.</P></LI>
+<LI><P><B>mutate smartctf clearstats</B><BR>Admins can also choose to clear the SmartCTF stats.</P></LI>
+<LI><P><B>mutate overtime &lt;on|off&gt;</B><BR>Only matters when bEnableOvertimeControl is True. By simply typing "mutate 
+overtime" you can check if Sudden Death Overtime is currently enabled (by default it is). "mutate overtime off" (admins 
+only) will make sure that if the map ends in a tie when the timelimit is reached, the game ends anyway. 
+Don't use for decider maps! See the FAQ for detailed information.</P></LI>
+</UL>
+
+<P>A good tip is to bind the toggle command to F3. This key only gets used for Assault so 
+for CTF its free. Bind F3 as follows in your <B>User.ini</B>:<BR>
+<B>F3=ShowObjectives | mutate smartctf showstats</B></P>
+<P>Now it will display the objectives during an Assault game and toggle the SmartCTF statboard during 
+a CTF game (also compatible with older versions of SmartCTF).</P>
+<P>Note: you can now also bind the command using the UT settings window, under Controls.<BR>-=EDIT=-<BR><B>No need for this now :P</B></P>
+
+<A NAME="faq">
+<HR SIZE="2" WIDTH="80%" COLOR="black" ALIGN="left">
+
+<P><B><FONT SIZE="6">F</FONT><FONT SIZE="5">AQ</FONT></B></P>
+
+<UL>
+
+<LI><P><B>When is a kill defined as a cover kill?</B><BR>
+Here is the technical information. When:<BR>
+- the victim is within 512 uu (10 meter) of your flagcarrier, or<BR>
+- you are within 512 uu (10 meter) of your flagcarrier, or<BR>
+- the victim is within 1536 (30 meter) of your flagcarrier and can see him, or<BR>
+- the victim is within 1024 (20 meter) of your flagcarrier and you can see your flagcarrier, or<BR>
+- the victim is within 768 (15 meter) of your flagcarrier and can see him if he turned.</P></LI>
+
+<LI><P><B>When is a kill defined as a seal?</B><BR>
+a) The opponent's team doesn't have the flag, but your team has.<BR>
+b) You kill an enemy on your side of the map.<BR>
+c) Your flagcarrier is also on your side of the map.<BR>
+"Your side of the map" means you are in a level zone with your color in its name 
+(Like "Red Base" or "Blue Corridor").</P></LI>
+
+<LI><P><B>How does SmartCTF check where I return a flag?</B><BR>
+It checks the names of the level zone you are in when you did the kill 
+(like "Red Base", "Blue Corridor" or "Upper Mid").<BR>
+Let's say your team is Red, then it checks for, and rewards as:<BR>
+"red" = Return in your base.<BR>
+"blue" = Return in enemy base.<BR>
+Neither = Return in the middle.<BR>
+900 uu (17 meter) from opponent flag = Close save.</P></LI>
+
+<LI><P><B>What is Overtime Control?</B><BR>
+This setting allows you to control whether Sudden Death Overtime should kick in, 
+when the time limit is reached and the cap scores are currently tied. If you don't 
+want to worry about this, simply leave <I>bEnableOvertimeControl</I> to False.<BR><BR>
+If it's set to True, you can set <I>bOvertime</I> to control it. You may want to use this 
+for official maps to make sure your opponent won't have a deciding cap 0.5 seconds 
+out of time (this is hard to tell). Instead, make sure the game ends even when 
+its tied. <I>bOvertime</I> = False does just that. For deciders don't forget to set 
+<I>bOvertime</I> back to True.<BR><BR>
+Because this is a tricky setting considering deciders (which require overtime), 
+you won't want to mess this up. By default <I>bRememberOvertimeSetting</I> = False, making 
+sure at each mapchange, <I>bOvertime</I> will be set back to True (= safe). Setting it 
+to True will ensure the <I>bOvertime</I> setting gets remembered through mapchanges.<BR><BR>
+Use "mutate overtime" to see the current setting. Also, when the tournament 
+game starts, you will see a big text for a few seconds, indicating whether it 
+is on or off. <A HREF="#commands">See Commands section.</A>
+</P></LI>
+
+<LI><P><B>How do I see stats mid-game?</B><BR>
+You know the answer</LI>
+
+<LI><P><B>OMG I'm a spawnkiller! How does SmartCTF define this?</B><BR>
+You get a spawnkill whenever you kill someone who has spawned less than 5 seconds ago, 
+AND hasen't picked up any weapons or meaningfull pickups yet. Thus, is defenseless.<BR><BR>
+The rule for Arena games such as Instagib, Rocket Launcher Arena and Sniper Arena is 
+different. Then, a spawnkill is any kill within 1 second after your victim spawned.<BR><BR>
+If you get 3 spawnkills in a row without dieing yourself, the server can be configured to 
+broadcast a message saying you are a LAMER!<BR>
+<BR>
+From version 4C, the mentioned timelimits can be configured with 
+<I>SpawnKillTimeNW</I> and <I>SpawnKillTimeArena</I>.</P></LI>
+
+<LI><P><B>What do the abbreviations on the statboard mean?</B><BR>
+<I>Personal stats;</I> <U>HS</U>: Number of HeadShots made, <U>SB</U>: number of ShieldBelt pickups, 
+<U>AM</U>: number of Damage Amplifier pickups, <U>TM</U>: time in minutes in the game, <U>EFF</U>: efficieny 
+aka the frag/death ratio, <U>P</U>/<U>PI</U>: ping, <U>L</U>/<U>PL</U>: packetloss %.<BR>
+<I>Team stats;</I> <U>PING</U>: average team ping, <U>PL</U>: average team packetloss, <U>TM</U>: time in minutes 
+the game is running, <U>SB</U>: % of ShieldBelts picked up in relation to the other team, 
+<U>AM</U>: % of Damage Amps picked up in relation to the other team.<BR>
+<I>Footer;</I> <U>TR</U>: TickRate of the server.</LI>
+
+<LI><P><B>I have already assigned blah,blah to F3</B><BR>
+Don’t worry.The existing keybind will be preserved and be double bound (i.e.: nothing is lost!).
+</UL>
+
+<A NAME="Credits">
+<HR SIZE="2" WIDTH="80%" COLOR="black" ALIGN="left">
+
+<P><B><FONT SIZE="6">C</FONT><FONT SIZE="5">REDITS</FONT></B></P>
+<P>1) <B>{Pin}Kev</B> -The "original" author of the mod.</P>
+<P>2) <B>{DnF2}SiNiSTeR</B> - Modified and tweaked this mod.
+<P>3) <B>[es]Rush</B>-  Added nice country flags
+<P>4) <B>Adminthis</B>-Made SmartCTF more compatible and user friendly
+<P>5) <B>}IN{The_Cowboy</B>-Added stats restoring feature
+<P>6) <B>Sp0ngeb0b</B>-Modified Scoreboard (brought SnowyScoreboard from CTT and added xmas effects) and fixed some bugs
+<A NAME="Special Thanks">
+<HR SIZE="2" WIDTH="80%" COLOR="black" ALIGN="left">
+
+<P><B><FONT SIZE="6">S</FONT><FONT SIZE="5">PECIAL <FONT SIZE="6">T</FONT>hanks</FONT></B></P>
+<P><B> Epic Games</B> (for making such game) </P>
+<P><B> [lol]:Mhor</B> of<A HREF="HTTP://www.teamlol.com"> www.teamlol.com</A> (Took some help from his mutator :D)</P>
+<P><B> Defrost (For the original SnowyScoreboard)</B> 
+<P><B><A HREF="HTTP://www.unrealadmin.org"> Unrealadmin.Org</A></B>
+
+
+<A NAME="contact">
+<HR SIZE="2" WIDTH="80%" COLOR="black" ALIGN="left">
+
+<P><B><FONT SIZE="6">C</FONT><FONT SIZE="5">ONTACT</FONT></B></P>
+
+<P>For SmartCTF 4(A,B,C) contact {DnF2}SiNiSTeR on 
+<A HREF="irc://irc.quakenet.org/DutchNet">#DutchNet</A> @ QuakeNet IRC</P>
+<P>Or <A HREF="http://www.clanbase.com/personinfo.php?pid=1591401">via the e-mail on this page</A>.</P>
+
+<P>For 4D  contact [es]Rush, Rush on unrealadmin.org forums.</P>
+
+<P>For 4E contact }IN{The_Cowboy on unrealadmin.org forums (send me a PM)<br>
+Contact Sp0ngeb0b on unrealadmin.org or send a mail to <a href="mailto:spongebobut@yahoo.com">spongebobut@yahoo.com</a></p>
+
+<HR SIZE="2" WIDTH="80%" COLOR="black" ALIGN="left">
+
+</BODY>
+
+</HTML>

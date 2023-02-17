@@ -19,7 +19,7 @@ var float StartY, StatLineHeight, StatBlockSpacing, StatIndent;
 var TournamentGameReplicationInfo pTGRI;
 var PlayerReplicationInfo pPRI;
 var Font StatFont, CapFont, FooterFont, GameEndedFont, PlayerNameFont, FragsFont, TinyInfoFont;
-var Font PtsFont22, PtsFont20, PtsFont18, PtsFont16, PtsFont14, PtsFont12;
+var Font PtsFont60, PtsFont54, PtsFont48, PtsFont42, PtsFont36, PtsFont30, PtsFont24, PtsFont22, PtsFont20, PtsFont18, PtsFont16, PtsFont14, PtsFont12;
 
 var int MaxCaps, MaxAssists, MaxGrabs, MaxCovers, MaxSeals, MaxDefKills, MaxFlagKills, MaxFrags, MaxDeaths;
 var int TotShieldBelts, TotAmps;
@@ -58,6 +58,13 @@ function PostBeginPlay()
   LastSortTime = -100;
 
   // Preload
+  PtsFont60 = Font( DynamicLoadObject( "LadderFonts.UTLadder60", class'Font' ) );
+  PtsFont54 = Font( DynamicLoadObject( "LadderFonts.UTLadder54", class'Font' ) );
+  PtsFont48 = Font( DynamicLoadObject( "LadderFonts.UTLadder48", class'Font' ) );
+  PtsFont42 = Font( DynamicLoadObject( "LadderFonts.UTLadder42", class'Font' ) );
+  PtsFont36 = Font( DynamicLoadObject( "LadderFonts.UTLadder36", class'Font' ) );
+  PtsFont30 = Font( DynamicLoadObject( "LadderFonts.UTLadder30", class'Font' ) );
+  PtsFont24 = Font( DynamicLoadObject( "LadderFonts.UTLadder24", class'Font' ) );
   PtsFont22 = Font( DynamicLoadObject( "LadderFonts.UTLadder22", class'Font' ) );
   PtsFont20 = Font( DynamicLoadObject( "LadderFonts.UTLadder20", class'Font' ) );
   PtsFont18 = Font( DynamicLoadObject( "LadderFonts.UTLadder18", class'Font' ) );
@@ -531,10 +538,18 @@ function InitStatBoardConstPos( Canvas C )
   PlayerNameFont = MyFonts.GetBigFont( C.ClipX );
   TinyInfoFont = C.SmallFont;
 
-  if( PlayerNameFont == PtsFont22 ) FragsFont = PtsFont18;
+  if( PlayerNameFont == PtsFont60 ) FragsFont = PtsFont54;
+  else if( PlayerNameFont == PtsFont54 ) FragsFont = PtsFont48;
+  else if( PlayerNameFont == PtsFont48 ) FragsFont = PtsFont42;
+  else if( PlayerNameFont == PtsFont42 ) FragsFont = PtsFont36;
+  else if( PlayerNameFont == PtsFont36 ) FragsFont = PtsFont30;
+  else if( PlayerNameFont == PtsFont30 ) FragsFont = PtsFont24;
+  else if( PlayerNameFont == PtsFont24 ) FragsFont = PtsFont20;
+  else if( PlayerNameFont == PtsFont22 ) FragsFont = PtsFont18;
   else if( PlayerNameFont == PtsFont20 ) FragsFont = PtsFont18;
   else if( PlayerNameFont == PtsFont18 ) FragsFont = PtsFont14;
   else if( PlayerNameFont == PtsFont16 ) FragsFont = PtsFont12;
+  else if( PlayerNameFont == PtsFont14 ) FragsFont = PtsFont12;
   else FragsFont = font'SmallFont';
 
   C.Font = PlayerNameFont;

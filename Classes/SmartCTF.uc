@@ -1509,8 +1509,6 @@ function Mutate( string MutateString, PlayerPawn Sender )
  */
 function bool HandleEndGame()
 {
-  local TeamInfo Best;
-  local byte i, MaxTeams;
   local bool bTied;
 
   if( CTFGame( Level.Game ).Teams[0].Score == CTFGame( Level.Game ).Teams[1].Score ) bTied = True;
@@ -1595,7 +1593,6 @@ function CalcSmartCTFEndStats()
 {
   local SmartCTFPlayerReplicationInfo TopScore, TopFrags, TopCaps, TopCovers, TopFlagkills, TopHeadshots;
   local string BestRecordDate;
-  local int ID;
   local float PerHour;
   local SmartCTFPlayerReplicationInfo PawnStats;
   local PlayerReplicationInfo PRI;
@@ -1877,11 +1874,7 @@ simulated function Timer()
   local bool bReady;
   local Pawn pn;
   local SmartCTFPlayerReplicationInfo SenderStats;
-  local	int		i,j,k;
-  local	string	IP;
-  local	Pawn	P;
-  
-  
+
   super.Timer();
 
   // Clients - 0.05 second timer. Stops after logo is displayed.

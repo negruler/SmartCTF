@@ -644,13 +644,12 @@ function DrawStatType( Canvas C, int X, int Y, int Row, int Col, string Label, i
 
 function DrawFooters( Canvas C )
 {
-  local float DummyX, DummyY, Nil, X1, Y1;
+  local float DummyX, DummyY, Nil;
   local string TextStr;
   local string TimeStr;
   local int Hours, Minutes, Seconds, i;
   local PlayerReplicationInfo PRI;
   local color specColor;
-  local int baseX, baseY;
 
   C.bCenter = True;
   C.Font = FooterFont;
@@ -710,7 +709,7 @@ function DrawFooters( Canvas C )
   C.StrLen( HeaderText, DummyX, Nil );
   C.Style = ERenderStyle.STY_Normal;
   C.SetPos( 0, C.ClipY - 5 * DummyY );
-  
+
   if(SCTFGame.bShowSpecs){
   specColor = SCTFGame.SpectatorColor;
   C.Font = MyFonts.GetSmallestFont(C.ClipX);
@@ -720,7 +719,7 @@ function DrawFooters( Canvas C )
   }else{
   C.DrawText( "" );      // Don't draw credits 2 times
   }
-  
+
   // Draw new-credits
 	C.StrLen( HeaderText2, DummyX, DummyY );
 	C.Style = ERenderStyle.STY_Normal;
@@ -728,7 +727,7 @@ function DrawFooters( Canvas C )
 	C.Font = MyFonts.GetSmallestFont(C.ClipX);
   C.DrawColor = Yellow;
   C.DrawText( HeaderText2 );
-   
+
   C.bCenter = False;
 }
 

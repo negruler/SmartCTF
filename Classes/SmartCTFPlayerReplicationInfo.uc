@@ -36,7 +36,6 @@ replication
 
 function PostBeginPlay()
 {
-  local Actor A;
 
   super.PostBeginPlay();
 

@@ -1342,6 +1342,16 @@ function ClearStats()
   FCs[1] = None;
 }
 
+function SmartSuperShockBeam(Actor A)
+{
+  BroadcastMessage("Shockbeam detected, instigator " @ A.Instigator.PlayerReplicationInfo.PlayerName);
+}
+
+function SmartSuperShockEplosion(Actor A)
+{
+  BroadcastMessage("Shock combo detected, instigator " @ A.Instigator.PlayerReplicationInfo.PlayerName);
+}
+
 /*
  * Give info on 'mutate smartctf' commands.
  */

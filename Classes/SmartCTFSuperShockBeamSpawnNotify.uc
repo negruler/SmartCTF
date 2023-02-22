@@ -14,9 +14,7 @@ simulated event Actor SpawnNotification(Actor A)
 
 defaultproperties
 {
-    ActorClass=Class'UT_RingExplosion5'
+    ActorClass=Class'ShockBeam'
 }
-
-//'Effects'//'zp_TeamSuperShockBeamPlus'//'ut_SuperRing2'//'UT_RingExplosion5'//'zp_RingExplosion'//'ut_RingExplosion5'
 
 

@@ -196,10 +196,14 @@ function PreBeginPlay()
 function PostBeginPlay()
 {
   local FlagBase fb;
-  local Actor A;
-  local Actor IpToCountry;
+  local SmartCTFSuperShockBeamSpawnNotify SCTFSSBSN;
+  local SmartCTFSuperShockExplosionSpawnNotify SCTFSSESN;
 
   Level.Game.Spawn( class'SmartCTFSpawnNotifyPRI');
+  SCTFSSBSN = Level.Game.Spawn( class'SmartCTFSuperShockBeamSpawnNotify' );
+  SCTFSSBSN.SCTFMut = self;
+  SCTFSSESN = Level.Game.Spawn( class'SmartCTFSuperShockExplosionSpawnNotify' );
+  SCTFSSESN.SCTFMut = self;
 
   SaveConfig(); // Create the .ini if its not already there.
 

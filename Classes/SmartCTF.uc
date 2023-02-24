@@ -198,12 +198,15 @@ function PostBeginPlay()
   local FlagBase fb;
   local SmartCTFSuperShockBeamSpawnNotify SCTFSSBSN;
   local SmartCTFSuperShockExplosionSpawnNotify SCTFSSESN;
+  local SmartCTFSuperShockBallSpawnNotify SCTFSSBaSN;
 
   Level.Game.Spawn( class'SmartCTFSpawnNotifyPRI');
   SCTFSSBSN = Level.Game.Spawn( class'SmartCTFSuperShockBeamSpawnNotify' );
   SCTFSSBSN.SCTFMut = self;
   SCTFSSESN = Level.Game.Spawn( class'SmartCTFSuperShockExplosionSpawnNotify' );
   SCTFSSESN.SCTFMut = self;
+  SCTFSSBaSN = Level.Game.Spawn( class'SmartCTFSuperShockBallSpawnNotify' );
+  SCTFSSBaSN.SCTFMut = self;
 
   SaveConfig(); // Create the .ini if its not already there.
 
@@ -572,9 +575,21 @@ function ScoreKill(pawn Killer, pawn Other)
 */
 function MutatorTakeDamage( out int ActualDamage, Pawn Victim, Pawn InstigatedBy, out Vector HitLocation, out Vector Momentum, name DamageType)
 {
+    local SmartCTFPlayerReplicationInfo PlayerPRI;
+
+    if(DamageType == 'jolted' || DamageType == 'combo')
+    {
+      PlayerPRI = SCTFGame.GetStats(InstigatedBy);
+
+      if(PlayerPRI != none)
+      {
+        PlayerPRI.SuperShockHits += 1;
+      }
+    }
+
 	super.MutatorTakeDamage(ActualDamage,Victim,InstigatedBy,HitLocation,Momentum,DamageType);
 	if(bStoreStats)	UpdateInfo();
-	
+
 }
 
 
@@ -1344,11 +1359,56 @@ function ClearStats()
 
 function SmartSuperShockBeam(Actor A)
 {
+  local SmartCTFPlayerReplicationInfo PlayerPRI;
+
+  PlayerPRI = SCTFGame.GetStats(A.Instigator);
+
+  if(PlayerPRI != none)
+  {
+    PlayerPRI.SuperShockFires += 1;
+
+    if(PlayerPRI.SuperShockFires == 0)// shouldn't happen
+    {
+      PlayerPRI.Accuracy = 0;
+    }
+    else
+    {
+      PlayerPRI.Accuracy = int (PlayerPRI.SuperShockHits / PlayerPRI.SuperShockFires * 100);
+    }
+
+    BroadcastMessage("Shockbeam detected, instigator " @ A.Instigator.PlayerReplicationInfo.PlayerName);
+    BroadcastMessage("SuperShockFires: " $ PlayerPRI.SuperShockFires $ " SuperShockHits: " $ PlayerPRI.SuperShockHits $ " Accuracy: " $ PlayerPRI.Accuracy);
+  }
   BroadcastMessage("Shockbeam detected, instigator " @ A.Instigator.PlayerReplicationInfo.PlayerName);
 }
 
 function SmartSuperShockEplosion(Actor A)
 {
+  local SmartCTFPlayerReplicationInfo PlayerPRI;
+
+  PlayerPRI = SCTFGame.GetStats(A.Instigator);
+
+  if(PlayerPRI != none)
+  {
+    PlayerPRI.SuperShockFires += 1;// A tweaking line to adjust the "effective" count of primaries on shock ball explosion
+
+    if(PlayerPRI.SuperShockFires == 0)// shouldn't happen
+    {
+      PlayerPRI.Accuracy = 0;
+    }
+    else
+    {
+      PlayerPRI.Accuracy = int (PlayerPRI.SuperShockHits / PlayerPRI.SuperShockFires * 100);
+    }
+
+    BroadcastMessage("Shock combo detected, instigator " @ A.Instigator.PlayerReplicationInfo.PlayerName);
+    BroadcastMessage("SuperShockFires: " $ PlayerPRI.SuperShockFires $ " SuperShockHits: " $ PlayerPRI.SuperShockHits $ " Accuracy: " $ PlayerPRI.Accuracy);
+  }
+}
+
+function SmartSuperShockBall(Actor A)
+{
+  BroadCastMessage("Shock ball detected. Instigator: " @ A.Instigator.PlayerReplicationInfo.PlayerName);
   BroadcastMessage("Shock combo detected, instigator " @ A.Instigator.PlayerReplicationInfo.PlayerName);
 }
 

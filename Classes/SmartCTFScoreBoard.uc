@@ -379,7 +379,7 @@ function SmartCTFShowScores( Canvas C )
       if( PlayerStats.Frags + Ordered[i].Deaths == 0 ) Eff = 0;
       else Eff = ( PlayerStats.Frags / ( PlayerStats.Frags + Ordered[i].Deaths ) ) * 100;
       C.SetPos( X + StatIndent + Size + StatsHorSpacing, Y + ( NameHeight - DummyY * 2 ) / 2 + DummyY );
-      C.DrawText( "TM:" $ Time $ " EFF:" $ Clamp( int( Eff ), 0, 100 ) $ "%" );
+      C.DrawText( "TM:" $ Time $ " EFF:" $ Clamp( int( Eff ), 0, 100 ) $ "%" $ " ACC:" $ PlayerStats.Accuracy $ "%");
 
       // Draw the country flag
       if(PlayerStats.CountryPrefix != "")

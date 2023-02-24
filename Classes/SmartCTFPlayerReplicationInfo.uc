@@ -2,7 +2,7 @@ class SmartCTFPlayerReplicationInfo expands ReplicationInfo;
 
 // Replicated
 var int Captures, Assists, Grabs, Covers, Seals, FlagKills, DefKills;
-var int Frags, HeadShots, ShieldBelts, Amps;
+var int Frags, HeadShots, ShieldBelts, Amps, Accuracy;
 
 var string CountryPrefix; // for IpToCountry
 
@@ -12,6 +12,7 @@ var int MultiLevel;
 var int FragSpree, CoverSpree, SealSpree, SpawnKillSpree;
 var float SpawnTime;
 var bool bHadFirstSpawn;
+var float SuperShockFires, SuperShockHits;
 
 // Client side
 var bool bViewingStats;
@@ -27,7 +28,7 @@ replication
   // Stats
   reliable if( Role == ROLE_Authority )
     Captures, Assists, Grabs, Covers, Seals, FlagKills, DefKills,
-    Frags, HeadShots, ShieldBelts, Amps, CountryPrefix;
+    Frags, HeadShots, ShieldBelts, Amps, Accuracy, CountryPrefix;
 
   // Toggle stats functions
   reliable if( Role == ROLE_Authority )

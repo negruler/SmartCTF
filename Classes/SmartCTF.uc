@@ -577,13 +577,25 @@ function MutatorTakeDamage( out int ActualDamage, Pawn Victim, Pawn InstigatedBy
 {
     local SmartCTFPlayerReplicationInfo PlayerPRI;
 
-    if(DamageType == 'jolted' || DamageType == 'combo')
+    if(InstigatedBy != none && (DamageType == 'jolted' || DamageType == 'combo'))
     {
       PlayerPRI = SCTFGame.GetStats(InstigatedBy);
 
       if(PlayerPRI != none)
       {
         PlayerPRI.SuperShockHits += 1;
+
+        if(PlayerPRI.SuperShockFires == 0)// shouldn't happen
+        {
+          PlayerPRI.Accuracy = 0;
+        }
+        else
+        {
+          PlayerPRI.Accuracy = int (PlayerPRI.SuperShockHits / PlayerPRI.SuperShockFires * 100);
+        }
+
+        BroadcastMessage("Shock damage detected, instigator " @ InstigatedBy.PlayerReplicationInfo.PlayerName);
+        BroadcastMessage("SuperShockFires: " $ PlayerPRI.SuperShockFires $ " SuperShockHits: " $ PlayerPRI.SuperShockHits $ " Accuracy: " $ PlayerPRI.Accuracy);
       }
     }
 
